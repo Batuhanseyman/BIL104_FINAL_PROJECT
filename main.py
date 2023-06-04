@@ -125,7 +125,7 @@ def main ():
     #Tecrubesi 10.000 tl uzerinde olanlarin loc methoduyla 2-5 satir arasi olanlarin tc ve yenimaas sutunlari kullanılarak 
     #yeni bir data framede gosterilmesi
     print(" Yeni maasi 10000 TL üzerinde olanlar için; 2-5 satir arasi olanlarin, tc_no ve yeni_maaş  sütunlarinin secilerek gosterilmesi")
-    df_sub = df [ df["Yeni Maas"] > 10000]
+    df_sub = df [ df["Yeni Maas"] > 10000].reset_index()
     print(df_sub.loc[1:4, ["Tc no", "Yeni Maas"]], "\n\n")
 
     #ad, soyad, sektor ve yeni maas sutunlarini iceren yeni bir data frame el edip ekrana yazdirilmasi
