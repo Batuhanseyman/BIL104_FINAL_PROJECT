@@ -1,18 +1,16 @@
 from Insan import Insan
 
 class Calisan (Insan):
-    #Yeni maasi tutan public class degiskeni. 
-    #Bu public degisken Calisan sinifindan miras alan MaviYaka ve BeyazYaka siniflarinda da ayni amacla kullaniliyor.
-    maas_yeni = 0
 
     #Class icin uygun parametreleri alan ve Insan class'inda bulunan ozellikleri Insan adli class'in init metoduna yollayan,
     #kendisine has özniteliklleri de gelen parametrelere esitleyen init metodu.Nesne icin girilen sektör, istenen sektör değilse 
-    #geçerli bir sektör girilene kadar klavyeden veri girişi sağlanıyor.
+    #geçerli bir sektör girilene kadar klavyeden veri girişi sağlanıyor. Yeni maaş da ayrı bir özellik olarak 0 a eşitleniyor.
     def __init__ (self, tc_no, ad, soyad, yas, cinsiyet, uyruk, sektor, tecrube, maas):
         Insan.__init__ (self, tc_no, ad, soyad, yas, cinsiyet, uyruk)
         
         self.__tecrube = tecrube
         self.__maas = maas
+        self.__maas_yeni = 0
         
         try:
             while sektor not in ["teknoloji", "muhasebe", "inşaat", "diğer"]:
@@ -42,6 +40,12 @@ class Calisan (Insan):
     def set_maas (self, maas):
         self.__maas = maas
 
+    def get_maas_yeni (self):
+        return self.__maas_yeni
+    
+    def set_maas_yeni (self, maas_yeni):
+        self.__maas_yeni = maas_yeni
+
     #Calisanin zam hakki oranini hesaplayip degeri donduren metot.
     def zam_hakki (self):
         zam_orani_onerisi = 0
@@ -69,12 +73,12 @@ class Calisan (Insan):
             zamli_maas = self.__maas + self.__maas * self.zam_hakki()/100
 
             if zamli_maas == self.__maas:
-                self.maas_yeni = self.__maas
+                self.__maas_yeni = self.__maas
         
             else:
-                self.maas_yeni = zamli_maas
+                self.__maas_yeni = zamli_maas
             
-            return self.maas_yeni
+            return self.__maas_yeni
             
         except Exception as err:
             print(err)

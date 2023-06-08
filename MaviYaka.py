@@ -41,12 +41,12 @@ class MaviYaka (Calisan):
             zamli_maas = self.get_maas() + self.get_maas() * self.zam_hakki()/100
 
             if zamli_maas == self.get_maas():
-                self.maas_yeni = self.get_maas()
+                self.set_maas_yeni(self.get_maas())
                 
             else:
-                self.maas_yeni = zamli_maas
+                self.set_maas_yeni(zamli_maas)
 
-            return self.maas_yeni
+            return zamli_maas
             
         except Exception as err:
             print(err)
